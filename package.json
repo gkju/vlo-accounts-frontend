@@ -1,0 +1,64 @@
+{
+  "name": "vlo-accounts-frontend",
+  "packageManager": "yarn@3.1.1",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "latest",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.27",
+    "@types/qs": "^6.9.7",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.18",
+    "@types/styled-components": "^5.1.14",
+    "axios": "latest",
+    "formik": "latest",
+    "framer-motion": "latest",
+    "history": "latest",
+    "oidc-client": "latest",
+    "qs": "latest",
+    "react": "latest",
+    "react-dom": "^17.0.2",
+    "react-google-recaptcha": "latest",
+    "react-google-recaptcha-v3": "^1.9.5",
+    "react-is": "^17.0.2",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^6.0.0-beta.5",
+    "react-scripts": "next",
+    "react-use": "^17.3.1",
+    "redux": "latest",
+    "styled-components": "latest",
+    "typescript": "next",
+    "vlo-accounts-client": "file:src/packages/vlo-accounts-client/",
+    "web-vitals": "^1.1.2",
+    "yup": "^0.32.9"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
