@@ -12236,11 +12236,11 @@ __metadata:
 
 "vlo-accounts-client@file:src/packages/vlo-accounts-client/::locator=vlo-accounts-frontend%40workspace%3A.":
   version: 1.0.0
-  resolution: "vlo-accounts-client@file:src/packages/vlo-accounts-client/#src/packages/vlo-accounts-client/::hash=734665&locator=vlo-accounts-frontend%40workspace%3A."
+  resolution: "vlo-accounts-client@file:src/packages/vlo-accounts-client/#src/packages/vlo-accounts-client/::hash=77404c&locator=vlo-accounts-frontend%40workspace%3A."
   dependencies:
     axios: latest
     typescript: next
-  checksum: 9d6ffc10328bcc4b98e62ea1ed74df31eb653207567e41079af23f5d635652532cf8563e97a8af470d05a6e2f372954882297072f9af97f702c80e4ad43f0cfa
+  checksum: dc7e9bb7cf1a052c6516fffac6b67749a51747a50aa88d008fffcfed77e232cb0aa2544368b9b70f4a247f8e3503f794d8ba81d12ba862189d901a45df195505
   languageName: node
   linkType: hard
 
