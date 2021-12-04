@@ -1,6 +1,3 @@
-﻿[submodule "vlo-accounts-client"]
-	path = src/packages/vlo-accounts-client
-	url = https://github.com/gkju/vlo-accounts-client-axios-ts
 [submodule "src/packages/vlo-accounts-client"]
 	path = src/packages/vlo-accounts-client
 	url = git@github.com:gkju/vlo-accounts-client-axios-ts
