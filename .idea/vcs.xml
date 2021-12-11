@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/packages/vlo-accounts-client" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/packages/vlo-accounts-client" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vlo-accounts-client-axios-ts" vcs="Git" />
   </component>
