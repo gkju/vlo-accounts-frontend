@@ -1,5 +1,6 @@
 import vlobg from "./vlobg.png";
 import styled from "styled-components";
+import {theme} from "../theme";
 
 export const Layout = styled.div`
   display: grid;
@@ -7,7 +8,7 @@ export const Layout = styled.div`
 `
 
 export const Container = styled.div`
-  background: #1D1D28;
+  background: ${theme.primary};
   display: grid;
   grid-template-rows: 30vh 50vh 20vh;
   width: 100%;

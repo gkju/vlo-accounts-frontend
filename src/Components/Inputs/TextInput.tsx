@@ -3,10 +3,11 @@ import styled from "styled-components";
 import {InputSize, inputWrapperProps, textInputProps} from "../Constants";
 import {useField} from "formik";
 import { motion } from "framer-motion";
+import {theme} from "../../theme";
 
 export const TextInput: FunctionComponent<textInputProps> = (props: textInputProps ) => {
     const [focused, setFocus] = useState(false);
-    const [show, setShow] = useState(!!props.password ? false :true);
+    const [show, setShow] = useState(false);
 
     const inputType = !show ? "password" : "text";
 
@@ -43,7 +44,7 @@ export const TextInput: FunctionComponent<textInputProps> = (props: textInputPro
     return (
         <Wrapper>
         <InputWrapper size={props.size}>
-            <NeumorphTextInput {...field} error={showFeedback && !!meta.error} onKeyDown={handleDown} onKeyUp={handleUp} hasValue={!!field.value} size={props.size} onFocus={() => setFocus(true)} onBlur={handleBlur} type={inputType} />
+            <NeumorphTextInput {...field} error={showFeedback && !!meta.error} onKeyDown={handleDown} onKeyUp={handleUp} hasValue={!!field.value} size={props.size} onFocus={() => setFocus(true)} onBlur={handleBlur} type={!!props.password ? inputType : "text"} />
             <Label size={props.size} focused={(Boolean) (focused || field.value)}>
                 <InnerLabel>
                     {props.placeholder}
@@ -58,7 +59,7 @@ export const TextInput: FunctionComponent<textInputProps> = (props: textInputPro
 }
 
 const InputWrapper = styled("div")<inputWrapperProps>`
-  background: #1D1D28;
+  background: ${theme.primary};
   box-shadow: inset 0 0 30px 5px rgba(0, 0, 0, 0.5);
   border-radius: 30px;
   display: flex;

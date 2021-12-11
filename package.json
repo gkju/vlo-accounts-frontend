@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mui/icons-material": "^5.2.1",
+    "@mui/material": "^5.2.3",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@reduxjs/toolkit": "latest",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -30,7 +33,7 @@
     "react-scripts": "^5.0.0-next.58",
     "react-use": "^17.3.1",
     "redux": "latest",
-    "styled-components": "latest",
+    "styled-components": "^5.3.3",
     "typescript": "next",
     "vlo-accounts-client": "file:packages/vlo-accounts-client/",
     "web-vitals": "^1.1.2",
@@ -62,5 +65,10 @@
   },
   "devDependencies": {
     "react-dev-utils": "^11.0.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+    }
   }
 }

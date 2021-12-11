@@ -9,19 +9,27 @@ import Store from "./Redux/Store/Store";
 import {Provider} from "react-redux";
 import {CaptchaConfig} from "./Config";
 import {GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { plPL } from '@mui/material/locale';
+
+const theme = createTheme(
+    plPL
+);
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={Store}>
             <GoogleReCaptchaProvider reCaptchaKey={String(CaptchaConfig.CaptchaKey)}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/login-callback" element={<LoginCallback />} />
-                    </Routes>
-                    {window === window.parent &&
-                        <OIDCLogon/>
-                    }
-                </BrowserRouter>
+                <ThemeProvider theme={theme}>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/login-callback" element={<LoginCallback />} />
+                        </Routes>
+                        {window === window.parent &&
+                            <OIDCLogon/>
+                        }
+                    </BrowserRouter>
+                </ThemeProvider>
             </GoogleReCaptchaProvider>
         </Provider>
     </React.StrictMode>,
