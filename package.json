@@ -17,18 +17,17 @@
     "@types/styled-components": "^5.1.14",
     "axios": "latest",
     "formik": "latest",
-    "framer-motion": "latest",
+    "framer-motion": "^5.4.5",
     "history": "latest",
     "oidc-client": "latest",
     "qs": "latest",
     "react": "latest",
     "react-dom": "^17.0.2",
-    "react-google-recaptcha": "latest",
     "react-google-recaptcha-v3": "^1.9.5",
     "react-is": "^17.0.2",
     "react-redux": "^7.2.5",
     "react-router-dom": "^6.0.0-beta.5",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.0-next.58",
     "react-use": "^17.3.1",
     "redux": "latest",
     "styled-components": "latest",
@@ -60,5 +59,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-dev-utils": "^11.0.4"
   }
 }
