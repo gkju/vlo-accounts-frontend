@@ -1,5 +1,5 @@
 import {User, UserManager, WebStorageStateStore} from "oidc-client";
-import {Configuration} from "./packages/vlo-accounts-client";
+import {Configuration} from "vlo-accounts-client";
 import authService from "./Auth/AuthService";
 
 export const CaptchaConfig = {
