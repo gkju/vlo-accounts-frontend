@@ -18,6 +18,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     size?: InputSize,
     primaryColor?: string,
     secondaryColor?: string
+    squared?: boolean,
+    radius?: number
 }
 
 export interface inputWrapperProps {

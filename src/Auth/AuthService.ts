@@ -2,9 +2,8 @@ import {authoritySettings} from "../Config";
 import {UserManager} from "oidc-client";
 import Store from "../Redux/Store/Store";
 import { setLoggedIn, setLoggedOut } from "../Redux/Slices/Auth";
-import {EmptyObj} from "../Utils";
 
-export class AuthService {
+class AuthService {
     private userManager: any = undefined;
 
     async ensureUserManagerCreated() {

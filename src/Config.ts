@@ -10,16 +10,19 @@ const otherAuthSettings = {
   WebStoragePrefix: "VLO_BOARDS_AUTH"
 }
 
+export const frontendOrigin = "http://localhost:3000";
+export const apiOrigin = "https://localhost:5001";
+
 export const apiLocation = "/api";
 
 export const authoritySettings = {
-  authority: "https://localhost:5001",
+  authority: apiOrigin + "/",
   client_id: "VLO_BOARDS",
-  redirect_uri: "https://localhost:5001/login-callback",
-  silent_redirect_uri: "https://localhost:5001/login-callback",
+  redirect_uri: frontendOrigin + "/login-callback",
+  silent_redirect_uri: frontendOrigin + "/login-callback",
   response_type: "code",
   scope:"openid profile VLO_BOARDS",
-  post_logout_redirect_uri : "https://localhost:5001/logout-callback",
+  post_logout_redirect_uri : frontendOrigin + "/logout-callback",
   userStore: new WebStorageStateStore({
     prefix: otherAuthSettings.WebStoragePrefix
   }),
@@ -28,6 +31,6 @@ export const authoritySettings = {
 };
 
 export const OpenApiSettings : Configuration = new Configuration({
-  basePath: "https://localhost:5001",
+  basePath: apiOrigin,
   accessToken: authService.GetToken()
 });

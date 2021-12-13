@@ -14,11 +14,11 @@ import {NavigateToReturnUrl} from "./ReturnUrlUtils";
 import {ReactComponent as GoogleLogo } from "./glogo.svg";
 import {Layout, ErrorSpan, InputWrapper, Container, Bg} from "./SharedStyledComponents";
 import {LoginApi} from "vlo-accounts-client";
-import {apiLocation, OpenApiSettings} from "../Config";
+import {apiLocation, apiOrigin, OpenApiSettings} from "../Config";
 import {GetReturnUrl} from "../Utils";
 
 const navigateGoogle = () => {
-    window.location.href = apiLocation + "/Auth/ExternalLogin?provider=Google" + (window.location.search.length > 1 ? "&" + window.location.search.substr(1) : "");
+    window.location.href = apiOrigin + apiLocation + "/Auth/ExternalLogin?provider=Google" + (window.location.search.length > 1 ? "&" + window.location.search.substr(1) : "");
 }
 
 export const Login: FunctionComponent = (props) => {

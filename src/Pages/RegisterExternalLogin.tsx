@@ -1,4 +1,3 @@
-import {NavigateToReturnUrl} from "./ReturnUrlUtils";
 import {Logo} from "../Logo";
 import {TextInput} from "../Components/Inputs/TextInput";
 import {InputSize} from "../Components/Constants";
@@ -6,8 +5,6 @@ import {Button} from "../Components/Inputs/Button";
 import {motion} from "framer-motion";
 import {useMount} from "react-use";
 import {Form, FormikProvider, FormikValues, useFormik} from "formik";
-import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
-import axios from "axios";
 import {FunctionComponent, useState} from "react";
 import {Layout, ErrorSpan, InputWrapper, Container, Bg} from "./SharedStyledComponents";
 import qs from "qs";
