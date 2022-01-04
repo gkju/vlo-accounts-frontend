@@ -34,7 +34,7 @@ export const RippleAble: FunctionComponent<RippleAbleProps> = (props) => {
     }
 
     return (
-        <Wrapper onPointerDown={handleDown} onPointerOut={handleUpOrLeave} onPointerUp={handleUpOrLeave}>
+        <Wrapper style={props.style} onPointerDown={handleDown} onPointerOut={handleUpOrLeave} onPointerUp={handleUpOrLeave}>
             {props.children}
             <WrapperInner style={props.style}>
                 <AnimatePresence>
@@ -51,7 +51,7 @@ export const RippleAble: FunctionComponent<RippleAbleProps> = (props) => {
 
 const Wrapper = styled.div`
   position: relative;
-  display: block;
+  display: inline-block;
 `
 
 const WrapperInner = styled.div`

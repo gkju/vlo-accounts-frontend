@@ -1,4 +1,4 @@
-import {MouseEventHandler} from "react";
+import {MouseEventHandler, ReactElement} from "react";
 
 export interface textInputProps {
     size?: InputSize,
@@ -33,4 +33,13 @@ export enum InputSize {
 export interface ModalProps {
     open: Boolean,
     close: MouseEventHandler<HTMLDivElement>
+}
+
+export interface Item {
+    route: string,
+    icon: ReactElement
+}
+
+export interface MenuProps {
+    items?: Array<Item>
 }

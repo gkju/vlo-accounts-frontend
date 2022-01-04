@@ -4,51 +4,62 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@mui/icons-material": "^5.2.1",
-    "@mui/material": "^5.2.3",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/material": "^5.2.6",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@reduxjs/toolkit": "latest",
-    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.27",
+    "@types/node": "^12.20.39",
     "@types/qs": "^6.9.7",
-    "@types/react": "^17.0.24",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-redux": "^7.1.18",
-    "@types/styled-components": "^5.1.14",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-redux": "^7.1.21",
+    "@types/styled-components": "^5.1.19",
     "axios": "latest",
     "formik": "latest",
-    "framer-motion": "^5.4.5",
+    "framer-motion": "^5.5.5",
     "history": "latest",
     "oidc-client": "latest",
     "qs": "latest",
     "react": "latest",
     "react-dom": "^17.0.2",
-    "react-google-recaptcha-v3": "^1.9.5",
+    "react-google-recaptcha-v3": "^1.9.7",
     "react-is": "^17.0.2",
-    "react-redux": "^7.2.5",
-    "react-router-dom": "^6.0.0-beta.5",
-    "react-scripts": "^5.0.0-next.58",
-    "react-use": "^17.3.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "^5.0.0",
+    "react-use": "^17.3.2",
     "redux": "latest",
     "styled-components": "^5.3.3",
     "typescript": "next",
-    "vlo-accounts-client": "file:packages/vlo-accounts-client/",
+    "vlo-accounts-client": "file:packages/vlo-accounts-client",
     "web-vitals": "^1.1.2",
-    "yup": "^0.32.9"
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -64,7 +75,17 @@
     ]
   },
   "devDependencies": {
-    "react-dev-utils": "^11.0.4"
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/builder-webpack5": "^6.4.9",
+    "@storybook/manager-webpack5": "^6.4.9",
+    "@storybook/node-logger": "^6.4.9",
+    "@storybook/preset-create-react-app": "^4.0.0",
+    "@storybook/react": "^6.4.9",
+    "@testing-library/user-event": "^12.8.3",
+    "react-dev-utils": "^11.0.4",
+    "webpack": "^5.65.0"
   },
   "pnpm": {
     "overrides": {

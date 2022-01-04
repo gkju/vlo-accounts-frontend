@@ -5,6 +5,7 @@ import {useMount} from "react-use";
 import {selectLoggedIn} from "./Redux/Slices/Auth";
 import {useSelector} from "react-redux";
 import authService from "./Auth/AuthService";
+import {Loader} from "./Loader";
 
 type OIDCLogonProps = {
 }
@@ -31,7 +32,7 @@ export const OIDCLogon: FunctionComponent<OIDCLogonProps> = (props) => {
                         <UnAuthedRoutes />
                     }
                 </Fragment> :
-                <h1>Not ready</h1>
+                <Loader />
             }
         </Fragment>
     )

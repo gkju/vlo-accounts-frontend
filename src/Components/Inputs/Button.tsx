@@ -6,7 +6,7 @@ import {RippleAble} from "./RippleAble";
 export const Button: FunctionComponent<ButtonProps> = (props) => {
 
     return (
-        <RippleAble style={{borderRadius: "20px"}}>
+        <RippleAble style={{borderRadius: props.radius ? props.radius + "px" : "20px"}}>
             <StyledButton {...props} type={props.type}>
                 <TextWrapper>
                     {props.children}
@@ -19,7 +19,7 @@ export const Button: FunctionComponent<ButtonProps> = (props) => {
 const StyledButton = styled("button")<ButtonProps>`
   outline: none;
   border: none;
-  border-radius: ${props => props.radius ? props.radius : "20px"};
+  border-radius: ${props => props.radius ? props.radius + "px" : "20px"};
   background: ${props => !!props.primaryColor ? props.primaryColor : "#6D5DD3"};
   color: ${props => !!props.secondaryColor ? props.secondaryColor : "#FFFFFF"};
   width:  ${props => props?.size === InputSize.Big ? 600 : props?.size === InputSize.Medium ? 435 : 200}px;
@@ -48,5 +48,5 @@ const StyledButton = styled("button")<ButtonProps>`
 `
 
 const TextWrapper = styled.span`
-  z-index: 1;
+  z-index: 2;
 `
