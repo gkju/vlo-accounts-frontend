@@ -17,14 +17,9 @@ import GoogleIcon from "@mui/icons-material/Google";
 import {motion} from "framer-motion";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useWindowSize} from "react-use";
+import {Item, MenuProps} from "./Constants";
 
-
-interface Item {
-    route: string,
-    icon: ReactElement
-}
-
-const Items: Array<Item> = [
+let Items: Array<Item> = [
     {
         route: "/AccountManagement",
         icon: <HomeIcon sx={{fontSize: "inherit"}} />
@@ -61,7 +56,7 @@ const ClosestMatch = (Items: Array<Item>, template: string) => {
     return index;
 }
 
-export const Menu: FunctionComponent = (props) => {
+export const Menu: FunctionComponent<MenuProps> = (props) => {
     const {width, height} = useWindowSize();
     const refs: MutableRefObject<any[]> = useRef([]);
     const location = useLocation();
@@ -69,7 +64,8 @@ export const Menu: FunctionComponent = (props) => {
     const [offset, setOffset] = useState(0);
     const [highlighterIndex, setIndex] = useState(0);
 
-    const horizontal = width < 600;
+    Items = props.items ?? Items;
+    const horizontal = width < 800;
 
     useEffect(() => {
         setOffset(horizontal ? refs.current[highlighterIndex].offsetLeft : refs.current[highlighterIndex].offsetTop);
@@ -147,4 +143,5 @@ const MenuItem = styled.div<MobileProps>`
   cursor: pointer;
   z-index: 1;
   opacity: 0.3;
+  -webkit-tap-highlight-color: transparent;
 `

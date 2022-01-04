@@ -72,7 +72,6 @@ export const Login: FunctionComponent = (props) => {
         })
     });
 
-    const [modal, setModal] = useState(false);
     const [loginError, setLoginError] = useState("");
 
     useMount(() => {
@@ -104,7 +103,7 @@ export const Login: FunctionComponent = (props) => {
                             </InputWrapper>
                         </Form>
                     </FormikProvider>
-                    <Modal open={modal} close={() => setModal(false)}>helo</Modal>
+
                     <InputWrapper style={{marginTop: "0"}}>
                         <Button onClick={navigateGoogle} type="submit" primaryColor="#FFFFFF" secondaryColor="#595959" size={InputSize.Medium} style={{display: "flex", justifyContent: "center", alignContent: "center"}}>Zaloguj się z <GoogleLogo style={{width: "42px", marginBottom: "-8px", marginLeft: "20px", transform: "scale(1.7)"}}/></Button>
                     </InputWrapper>

@@ -31,9 +31,9 @@ export const Modal: FunctionComponent<ModalProps> = (props) => {
     }
 
     const modalVariants = {
-        exit: {top: "150%", transition: {type: "spring"}},
-        open: {top: "50%"},
-        initial: {top: "-50%", transition: {type: "spring", velocity: 2}}
+        exit: {scale: 0},
+        open: {scale: "100%", transition: {type: "spring"}},
+        initial: {scale: 0, transition: {type: "spring", velocity: 2}}
     }
 
 
@@ -58,8 +58,8 @@ const ModalDiv = styled(motion.div)`
   top: 50%;
   left: 50%;
   background: #1D1D28;
-  min-width: 60vw;
-  min-height: 50vh;
+  min-width: 60px;
+  min-height: 50px;
   padding: 40px 20px;
   border-radius: 20px;
   transform: translate(-50%, -50%);
@@ -68,7 +68,7 @@ const ModalDiv = styled(motion.div)`
   font-style: normal;
   font-weight: bold;
   color: white;
-  font-size: 40px;
+  font-size: 15px;
   
   text-align: center;
 `
