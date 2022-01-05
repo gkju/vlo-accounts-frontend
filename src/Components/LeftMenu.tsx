@@ -83,11 +83,11 @@ export const Menu: FunctionComponent<MenuProps> = (props) => {
     //}, [Items.length]);
 
     return (
-      <MenuBase mobile={horizontal}>
-          <MenuHighlighter mobile={horizontal} as={motion.div} animate={horizontal ? {x: offset} : {y: offset}} />
+      <MenuBase $mobile={horizontal}>
+          <MenuHighlighter $mobile={horizontal} as={motion.div} animate={horizontal ? {x: offset} : {y: offset}} />
           {
               Items.map((item, index) =>
-                <MenuItem mobile={horizontal} onClick={() => navigate(item.route)} animate={{opacity: highlighterIndex === index ? 1 : 0.3}} as={motion.div} whileHover={{scale: 1.05}} whileTap={{scale: 0.9}} key={index} ref={(element: HTMLDivElement) => refs.current[index] = element}>
+                <MenuItem $mobile={horizontal} onClick={() => navigate(item.route)} animate={{opacity: highlighterIndex === index ? 1 : 0.3}} as={motion.div} whileHover={{scale: 1.05}} whileTap={{scale: 0.9}} key={index} ref={(element: HTMLDivElement) => refs.current[index] = element}>
                     {item.icon}
                 </MenuItem>
               )
@@ -97,21 +97,22 @@ export const Menu: FunctionComponent<MenuProps> = (props) => {
 }
 
 interface MobileProps {
-    mobile: boolean
+    $mobile: boolean
 }
+
 
 const MenuBase = styled.div<MobileProps>`
   background: ${theme.primary};
-  width: ${props => props.mobile ? "100%" : "70px"};
-  height: ${props => !props.mobile ? "100%" : "70px"};
+  width: ${props => props.$mobile ? "100%" : "70px"};
+  height: ${props => !props.$mobile ? "100%" : "70px"};
   z-index: 1;
   position: fixed;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: ${props => props.mobile ? "row" : "column"};
-  justify-content: ${props => props.mobile ? "space-around" : "flex-start"};
-  bottom: ${props => props.mobile ? "0" : ""};
+  flex-direction: ${props => props.$mobile ? "row" : "column"};
+  justify-content: ${props => props.$mobile ? "space-around" : "flex-start"};
+  bottom: ${props => props.$mobile ? "0" : ""};
   align-items: center;
   overflow: hidden;
 `
@@ -123,17 +124,16 @@ const MenuHighlighter = styled.div<MobileProps>`
   height: 50px;
   border-radius: 10px;
   z-index: 0;
-  top: ${props => props.mobile ? "" : "0"};
-  left: ${props => !props.mobile ? "" : "0"};
+  top: ${props => props.$mobile ? "" : "0"};
+  left: ${props => !props.$mobile ? "" : "0"};
   cursor: pointer;
-  margin: ${props => props.mobile ? "0 auto" : "auto 0"};
 `
 
 const MenuItem = styled.div<MobileProps>`
   background: transparent;
-  width: ${props => props.mobile ? "50px" : "100%"};
-  height: ${props => !props.mobile ? "50px" : "100%"};
-  margin-top: ${props => props.mobile ? "0" : "10px"};
+  width: ${props => props.$mobile ? "50px" : "100%"};
+  height: ${props => !props.$mobile ? "50px" : "100%"};
+  margin-top: ${props => props.$mobile ? "0" : "10px"};
   display: flex;
   justify-content: center;
   align-items: center;

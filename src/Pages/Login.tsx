@@ -6,7 +6,6 @@ import {Form, FormikProvider, FormikValues, useFormik} from "formik";
 import * as Yup from 'yup';
 import {Button} from "../Components/Inputs/Button";
 import {motion} from "framer-motion";
-import {Modal} from "../Components/Modal";
 import {useMount} from "react-use";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 import qs from "qs";
@@ -31,6 +30,8 @@ export const Login: FunctionComponent = (props) => {
         error = "";
     }
 
+    // TODO refactor client error processing when receiving errors in body (new unified format)
+
     const handleSubmit = async (values: FormikValues) => {
         setLoginError("");
         const captchaResponse = executeRecaptcha ? await executeRecaptcha("login") : "";
@@ -46,14 +47,13 @@ export const Login: FunctionComponent = (props) => {
         } catch (res: any) {
             let response = res.response;
             if(response.status === 400) {
-                setLoginError(response.data[""][0]);
+                setLoginError(response.data["Errors"].values()[0]);
             } else if(response.status === 422) {
                 //handle 2fa
             }  else if(response.status === 423) {
                 setLoginError("Konto zostało zablokowane na 5 minut po ostatniej nieudanej próbie logowania");
             }
         }
-
     }
 
     const Formik = useFormik(        {
