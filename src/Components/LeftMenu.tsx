@@ -58,7 +58,7 @@ const ClosestMatch = (Items: Array<Item>, template: string) => {
 
 export const Menu: FunctionComponent<MenuProps> = (props) => {
     const {width, height} = useWindowSize();
-    const refs: MutableRefObject<any[]> = useRef([]);
+    const refs = useRef<HTMLDivElement[]>([]);
     const location = useLocation();
     const navigate = useNavigate();
     const [offset, setOffset] = useState(0);
@@ -87,7 +87,7 @@ export const Menu: FunctionComponent<MenuProps> = (props) => {
           <MenuHighlighter $mobile={horizontal} as={motion.div} animate={horizontal ? {x: offset} : {y: offset}} />
           {
               Items.map((item, index) =>
-                <MenuItem $mobile={horizontal} onClick={() => navigate(item.route)} animate={{opacity: highlighterIndex === index ? 1 : 0.3}} as={motion.div} whileHover={{scale: 1.05}} whileTap={{scale: 0.9}} key={index} ref={(element: HTMLDivElement) => refs.current[index] = element}>
+                <MenuItem $mobile={horizontal} onClick={() => navigate(item.route)} animate={{opacity: highlighterIndex === index ? 1 : 0.3}} as={motion.div} whileHover={{scale: 1.05}} whileTap={{scale: 0.9}} key={index} ref={(el: (HTMLDivElement | null)) => el ? refs.current[index] = el : <Fragment />}>
                     {item.icon}
                 </MenuItem>
               )
