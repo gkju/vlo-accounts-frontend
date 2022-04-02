@@ -11,6 +11,7 @@ export const AuthedRoutes: FunctionComponent = (props) => {
             <Menu />
             <Routes>
                 <Route path="*" element={<Dashboard/>} />
+                <Route path="manage" />
             </Routes>
         </Fragment>
     )
