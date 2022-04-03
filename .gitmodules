@@ -1,4 +1,0 @@
-[submodule "src/packages/vlo-accounts-client"]
-	path = packages/vlo-accounts-client
-	url = git@github.com:gkju/vlo-accounts-client-axios-ts
-	branch = master
