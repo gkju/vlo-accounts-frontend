@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <excludedPredefinedLibrary name="Dependencies from vlo-accounts-frontend\packages\vlo-accounts-client\package.json" />
+  </component>
+</project>

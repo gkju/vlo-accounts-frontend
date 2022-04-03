@@ -34,7 +34,7 @@
     "redux": "latest",
     "styled-components": "^5.3.5",
     "typescript": "next",
-    "vlo-accounts-client": "link:packages\\vlo-accounts-client",
+    "vlo-accounts-client": "file:..\\..\\vlo-accounts-client\\vlo-accounts-client-1.0.0.tgz",
     "vlo-ui": "file:..\\..\\vlo-ui\\vlo-ui-1.0.0.tgz",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
