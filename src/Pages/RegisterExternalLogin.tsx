@@ -1,7 +1,5 @@
 import {Logo} from "../Logo";
-import {TextInput} from "../Components/Inputs/TextInput";
-import {InputSize} from "../Components/Constants";
-import {Button} from "../Components/Inputs/Button";
+import {Button, Modal, TextInput, InputSize} from "vlo-ui";
 import {motion} from "framer-motion";
 import {useMount} from "react-use";
 import {Form, FormikProvider, FormikValues, useFormik} from "formik";
@@ -12,7 +10,6 @@ import * as Yup from 'yup';
 import { ExternalLoginApi} from "vlo-accounts-client";
 import {OpenApiSettings} from "../Config";
 import {GetReturnUrl} from "../Utils";
-import {Modal} from "../Components/Modal";
 import {useNavigate} from "react-router-dom";
 
 export const RegisterExternalLogin: FunctionComponent = (props) => {

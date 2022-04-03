@@ -5,36 +5,37 @@
   "private": true,
   "dependencies": {
     "@mui/icons-material": "^5.5.1",
-    "@mui/material": "^5.5.2",
+    "@mui/material": "^5.5.3",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@reduxjs/toolkit": "latest",
-    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^11.2.7",
     "@types/jest": "^26.0.24",
     "@types/node": "^12.20.47",
     "@types/qs": "^6.9.7",
-    "@types/react": "^17.0.41",
+    "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/react-redux": "^7.1.23",
     "@types/styled-components": "^5.1.24",
     "axios": "latest",
     "formik": "latest",
-    "framer-motion": "^5.6.0",
+    "framer-motion": "^6.2.8",
     "history": "latest",
     "oidc-client": "latest",
     "qs": "latest",
-    "react": "latest",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-google-recaptcha-v3": "^1.9.7",
-    "react-is": "^17.0.2",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.2",
+    "react-is": "^18.0.0",
+    "react-redux": "^7.2.8",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.0",
     "react-use": "^17.3.2",
     "redux": "latest",
-    "styled-components": "^5.3.3",
+    "styled-components": "^5.3.5",
     "typescript": "next",
     "vlo-accounts-client": "link:packages\\vlo-accounts-client",
+    "vlo-ui": "file:..\\..\\vlo-ui\\vlo-ui-1.0.0.tgz",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
   },
@@ -42,9 +43,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -75,17 +74,9 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-links": "^6.4.19",
-    "@storybook/builder-webpack5": "^6.4.19",
-    "@storybook/manager-webpack5": "^6.4.19",
-    "@storybook/node-logger": "^6.4.19",
-    "@storybook/preset-create-react-app": "^4.1.0",
-    "@storybook/react": "^6.4.19",
     "@testing-library/user-event": "^12.8.3",
     "react-dev-utils": "^11.0.4",
-    "webpack": "^5.70.0"
+    "webpack": "^5.71.0"
   },
   "pnpm": {
     "overrides": {

@@ -11,30 +11,37 @@ import {CaptchaConfig} from "./Config";
 import {GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { plPL } from '@mui/material/locale';
+import {createRoot} from "react-dom/client";
 
 const theme = createTheme(
     plPL
 );
 
-ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={Store}>
-            <GoogleReCaptchaProvider reCaptchaKey={String(CaptchaConfig.CaptchaKey)}>
-                <ThemeProvider theme={theme}>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/login-callback" element={<LoginCallback />} />
-                        </Routes>
-                        {window === window.parent &&
-                            <OIDCLogon/>
-                        }
-                    </BrowserRouter>
-                </ThemeProvider>
-            </GoogleReCaptchaProvider>
-        </Provider>
-    </React.StrictMode>,
-  document.getElementById('root')
-);
+const container = document.getElementById('root');
+
+if(container) {
+    const root = createRoot(container);
+
+    root.render(
+        <React.StrictMode>
+            <Provider store={Store}>
+                <GoogleReCaptchaProvider reCaptchaKey={String(CaptchaConfig.CaptchaKey)}>
+                    <ThemeProvider theme={theme}>
+                        <BrowserRouter>
+                            <Routes>
+                                <Route path="/login-callback" element={<LoginCallback />} />
+                            </Routes>
+                            {window === window.parent &&
+                                <OIDCLogon/>
+                            }
+                        </BrowserRouter>
+                    </ThemeProvider>
+                </GoogleReCaptchaProvider>
+            </Provider>
+        </React.StrictMode>
+    );
+}
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

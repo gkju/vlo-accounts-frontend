@@ -2,7 +2,7 @@ import {Fragment, FunctionComponent, ReactPropTypes} from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 import authService from "./Auth/AuthService";
 import {Dashboard} from "./Pages/Authed/Dashboard";
-import {Menu} from "./Components/LeftMenu";
+import {Menu} from "vlo-ui";
 
 export const AuthedRoutes: FunctionComponent = (props) => {
 

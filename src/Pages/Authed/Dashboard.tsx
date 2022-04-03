@@ -1,6 +1,6 @@
 import {FunctionComponent, ReactPropTypes, useState, Fragment} from "react";
 import styled from "styled-components";
-import {theme} from "../../theme";
+import {theme} from "vlo-ui";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 
 export const Dashboard: FunctionComponent = (props) => {

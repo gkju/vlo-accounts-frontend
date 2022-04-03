@@ -1,6 +1,6 @@
 import vlobg from "./vlobg.png";
 import styled from "styled-components";
-import {theme} from "../theme";
+import {theme} from "vlo-ui";
 
 export const Layout = styled.div`
   display: grid;
