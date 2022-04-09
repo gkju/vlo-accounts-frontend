@@ -1,6 +1,6 @@
 import {FunctionComponent, useState} from "react";
 import {Logo} from "../Logo";
-import {Button, TextInput, InputSize} from "vlo-ui";
+import {Button, TextInput, InputSize} from "@gkju/vlo-ui";
 import {Form, FormikProvider, FormikValues, useFormik} from "formik";
 import * as Yup from 'yup';
 import {motion} from "framer-motion";
@@ -10,7 +10,7 @@ import qs from "qs";
 import {NavigateToReturnUrl} from "./ReturnUrlUtils";
 import {ReactComponent as GoogleLogo } from "./glogo.svg";
 import {Layout, ErrorSpan, InputWrapper, Container, Bg} from "./SharedStyledComponents";
-import {LoginApi} from "vlo-accounts-client";
+import {LoginApi} from "@gkju/vlo-accounts-client-axios-ts";
 import {apiLocation, apiOrigin, OpenApiSettings} from "../Config";
 import {GetReturnUrl} from "../Utils";
 import {LoginWithPassword} from "./Login/LoginPassword";

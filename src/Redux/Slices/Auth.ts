@@ -1,4 +1,4 @@
-import {User} from "oidc-client";
+import {IdTokenClaims, User} from "oidc-client-ts";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../Store/Store";
 import {EmptyObj} from "../../Utils";
@@ -6,7 +6,7 @@ import {EmptyObj} from "../../Utils";
 
 interface authState {
     loggedIn: boolean,
-    profile?: {},
+    profile?: IdTokenClaims
     lastKnownUrl: string
 }
 
@@ -16,7 +16,7 @@ export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setLoggedIn(state, action: PayloadAction<{profile: {}}>) {
+        setLoggedIn(state, action: PayloadAction<{profile: IdTokenClaims}>) {
             state.loggedIn = true;
             state.profile = action.payload.profile;
         },

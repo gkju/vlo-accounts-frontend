@@ -1,9 +1,9 @@
 import {Form, Formik, FormikProvider, FormikValues, useFormik} from "formik";
 import {ErrorSpan, InputWrapper} from "../SharedStyledComponents";
-import {Button, InputSize, TextInput} from "vlo-ui";
+import {Button, InputSize, TextInput} from "@gkju/vlo-ui";
 import {motion} from "framer-motion";
 import {FunctionComponent, PropsWithChildren} from "react";
-import {LoginApi} from "vlo-accounts-client";
+import {ChangePasswordApi, LoginApi} from "@gkju/vlo-accounts-client-axios-ts";
 import {OpenApiSettings} from "../../Config";
 import {GetReturnUrl} from "../../Utils";
 import {NavigateToReturnUrl} from "../ReturnUrlUtils";
@@ -27,8 +27,8 @@ export const LoginWithPassword: FunctionComponent<LoginWithPasswordProps> = (pro
         setLoginError("");
         const captchaResponse = executeRecaptcha ? await executeRecaptcha("login") : "";
         try {
-            let loginApi = new LoginApi(OpenApiSettings);
-            let response = await loginApi.apiAuthLoginPost(GetReturnUrl(window.location.search), {username: values.username, password: values.password, rememberMe: true, captchaResponse});
+            let loginApi: LoginApi = new LoginApi(OpenApiSettings);
+            let response = await loginApi.apiAuthLoginPost(GetReturnUrl(window.location.search), {usernameOrEmail: values.username, password: values.password, rememberMe: true, captchaResponse});
 
             if(response.status === 200) {
                 await NavigateToReturnUrl(returnUrl);

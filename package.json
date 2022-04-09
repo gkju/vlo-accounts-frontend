@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@gkju/vlo-accounts-client-axios-ts": "^1.0.0",
+    "@gkju/vlo-ui": "^1.0.0",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.3",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
@@ -21,12 +23,13 @@
     "formik": "latest",
     "framer-motion": "^6.2.8",
     "history": "latest",
-    "oidc-client": "latest",
+    "oidc-client-ts": "^2.0.3",
     "qs": "latest",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-google-recaptcha-v3": "^1.9.7",
     "react-is": "^18.0.0",
+    "react-query": "^3.34.19",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.0",
@@ -34,13 +37,11 @@
     "redux": "latest",
     "styled-components": "^5.3.5",
     "typescript": "next",
-    "vlo-accounts-client": "file:..\\..\\vlo-accounts-client\\vlo-accounts-client-1.0.0.tgz",
-    "vlo-ui": "file:..\\..\\vlo-ui\\vlo-ui-1.0.0.tgz",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -75,6 +76,7 @@
   },
   "devDependencies": {
     "@testing-library/user-event": "^12.8.3",
+    "cross-env": "^7.0.3",
     "react-dev-utils": "^11.0.4",
     "webpack": "^5.71.0"
   },

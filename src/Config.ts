@@ -1,6 +1,7 @@
-import {User, UserManager, WebStorageStateStore} from "oidc-client";
-import {Configuration} from "vlo-accounts-client";
+import {WebStorageStateStore} from "oidc-client-ts";
+import {Configuration} from "@gkju/vlo-accounts-client-axios-ts";
 import authService from "./Auth/AuthService";
+import {UserManagerSettings} from "oidc-client-ts";
 
 export const CaptchaConfig = {
   CaptchaKey: "6LfvfoAaAAAAAArJt9n55Z-7WbwCJccw2QAGNOCS"
@@ -10,12 +11,14 @@ const otherAuthSettings = {
   WebStoragePrefix: "VLO_BOARDS_AUTH"
 }
 
-export const frontendOrigin = "http://localhost:3000";
-export const apiOrigin = "https://localhost:5001";
+export const isDevelopment = process.env.NODE_ENV === "development";
+
+export const frontendOrigin = isDevelopment ? "http://localhost:3000" : "https://suvlo.pl";
+export const apiOrigin = isDevelopment ? "https://localhost:5001" : "https://suvlo.pl";
 
 export const apiLocation = "/api";
 
-export const authoritySettings = {
+export const authoritySettings: UserManagerSettings = {
   authority: apiOrigin + "/",
   client_id: "VLO_BOARDS",
   redirect_uri: frontendOrigin + "/login-callback",
@@ -30,7 +33,8 @@ export const authoritySettings = {
   automaticSilentRenew: true
 };
 
+authService.GetToken().then(res => console.log("TOKEN", res));
+
 export const OpenApiSettings : Configuration = new Configuration({
-  basePath: apiOrigin,
-  accessToken: authService.GetToken()
+  basePath: apiOrigin
 });

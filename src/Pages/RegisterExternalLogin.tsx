@@ -1,5 +1,5 @@
 import {Logo} from "../Logo";
-import {Button, Modal, TextInput, InputSize} from "vlo-ui";
+import {Button, Modal, TextInput, InputSize} from "@gkju/vlo-ui";
 import {motion} from "framer-motion";
 import {useMount} from "react-use";
 import {Form, FormikProvider, FormikValues, useFormik} from "formik";
@@ -7,7 +7,7 @@ import {FunctionComponent, useState} from "react";
 import {Layout, ErrorSpan, InputWrapper, Container, Bg} from "./SharedStyledComponents";
 import qs from "qs";
 import * as Yup from 'yup';
-import { ExternalLoginApi} from "vlo-accounts-client";
+import { ExternalLoginApi} from "@gkju/vlo-accounts-client-axios-ts";
 import {OpenApiSettings} from "../Config";
 import {GetReturnUrl} from "../Utils";
 import {useNavigate} from "react-router-dom";
@@ -21,7 +21,7 @@ export const RegisterExternalLogin: FunctionComponent = (props) => {
 
         try {
             let externalLoginApi = new ExternalLoginApi(OpenApiSettings);
-            let response = await externalLoginApi.apiAuthExternalLoginCreateAccountPost(GetReturnUrl(window.location.search), {username: values.username, email: values.email});
+            let response = await externalLoginApi.apiAuthExternalLoginCreateAccountPost( {username: values.username, email: values.email});
             if(response.status === 200) {
                 setModal(true);
             }

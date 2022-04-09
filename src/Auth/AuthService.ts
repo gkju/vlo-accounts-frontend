@@ -1,13 +1,13 @@
 import {authoritySettings} from "../Config";
-import {UserManager} from "oidc-client";
+import {User, UserManager, IdTokenClaims} from "oidc-client-ts";
 import Store from "../Redux/Store/Store";
 import { setLoggedIn, setLoggedOut } from "../Redux/Slices/Auth";
 
 class AuthService {
-    private userManager: any = undefined;
+    private userManager?: UserManager = undefined;
 
     async ensureUserManagerCreated() {
-        if(this.userManager === undefined) {
+        if(!this.userManager) {
             this.userManager = new UserManager(authoritySettings);
             this.userManager.events.addUserLoaded(this.onUserLoaded);
             this.userManager.events.addSilentRenewError(this.onSilentRenewError);
@@ -20,27 +20,47 @@ class AuthService {
 
     async signInSilent() {
         await this.ensureUserManagerCreated();
-        try {
-            await this.userManager.signinSilent();
-            Store.dispatch(setLoggedIn({profile: (await this.userManager.getUser()).profile}));
-        } catch(e) {
-            console.error(e);
+        // fixes intellisense
+        if(!this.userManager) {
+            return;
         }
+
+        await this.userManager.signinSilent();
+        await this.setUser();
     }
 
     async processSignInUrl(url: string): Promise<boolean> {
-        try {
-            await this.ensureUserManagerCreated();
-            await this.userManager.signinCallback(url);
-            Store.dispatch(setLoggedIn({profile: (await this.userManager.getUser()).profile}));
-            return true;
-        } catch (error) {
+        await this.ensureUserManagerCreated();
+        // fixes intellisense
+        if(!this.userManager) {
             return false;
         }
+
+        await this.userManager.signinCallback(url);
+        await this.setUser();
+        return true;
+    }
+
+    async setUser() {
+        await this.ensureUserManagerCreated();
+        // fixes intellisense, cannot be in separate function
+        if(!this.userManager) {
+            return false;
+        }
+        let profile = (await this.userManager.getUser())?.profile;
+        if(!profile) {
+            throw new Error("Profile is undefined");
+        }
+        Store.dispatch(setLoggedIn({profile}));
     }
 
     async GetToken() {
         await this.ensureUserManagerCreated();
+        // fixes intellisense
+        if(!this.userManager) {
+            throw new Error("???");
+        }
+
         return (await this.userManager.getUser())?.access_token || "";
     }
 
