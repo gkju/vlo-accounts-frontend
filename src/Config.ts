@@ -33,8 +33,6 @@ export const authoritySettings: UserManagerSettings = {
   automaticSilentRenew: true
 };
 
-authService.GetToken().then(res => console.log("TOKEN", res));
-
 export const OpenApiSettings : Configuration = new Configuration({
   basePath: apiOrigin
 });

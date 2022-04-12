@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { plPL } from '@mui/material/locale';
 import {createRoot} from "react-dom/client";
 import {QueryClient, QueryClientProvider} from "react-query";
+import {ModalHandler} from "./Redux/ReactIntegrations/ModalHandler";
 
 const theme = createTheme(
     plPL
@@ -39,6 +40,7 @@ if(container) {
                                     <OIDCLogon/>
                                 }
                             </BrowserRouter>
+                            <ModalHandler />
                         </ThemeProvider>
                     </GoogleReCaptchaProvider>
                 </Provider>

@@ -25,6 +25,6 @@ export const ProfilePicture: FunctionComponent<ProfilePictureProps> = (props) =>
     }
 
     return (
-        <img src={data.data} alt="Zdjęcie profilowe" style={{width: "150px", height: "150px", borderRadius: "50%", objectFit: "cover", objectPosition:  "center"}} />
+        <img src={data.data} alt="Zdjęcie profilowe" style={{width: "200px", height: "200px", borderRadius: "50%", objectFit: "cover", objectPosition:  "center"}} />
     )
 }

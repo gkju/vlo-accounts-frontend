@@ -1,9 +1,9 @@
 import {selectProfile} from "../../../Redux/Slices/Auth";
 import {useSelector} from "react-redux";
-import {ProfilePicture} from "../Components/ProfilePicture";
 import {VLoader} from "@gkju/vlo-ui";
 import {FunctionComponent} from "react";
 import styled from "styled-components";
+import {EditableProfilePicture} from "../Components/EditableProfilePicture";
 
 export const AccountManagement: FunctionComponent = () => {
     const profile = useSelector(selectProfile);
@@ -15,7 +15,7 @@ export const AccountManagement: FunctionComponent = () => {
     return (
     <Wrapper>
         <Intro>
-            <ProfilePicture Id={profile.sub} />
+            <EditableProfilePicture profile={profile} />
         </Intro>
 
     </Wrapper>
