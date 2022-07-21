@@ -1,0 +1,123 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "vlo-accounts-frontend",
+      "packageManager": "pnpm@6.23.6",
+      "version": "0.1.0",
+      "private": true,
+      "dependencies": {
+        "@gkju/vlo-accounts-client-axios-ts": "^1.0.0",
+        "@gkju/vlo-ui": "1.0.6",
+        "@mui/icons-material": "^5.6.1",
+        "@mui/material": "^5.6.1",
+        "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+        "@reduxjs/toolkit": "latest",
+        "@testing-library/jest-dom": "^5.16.4",
+        "@testing-library/react": "^11.2.7",
+        "@types/jest": "^26.0.24",
+        "@types/node": "^12.20.47",
+        "@types/qs": "^6.9.7",
+        "@types/react": "^17.0.44",
+        "@types/react-redux": "^7.1.23",
+        "@types/styled-components": "^5.1.25",
+        "axios": "latest",
+        "formik": "latest",
+        "framer-motion": "^6.2.10",
+        "history": "latest",
+        "oidc-client-ts": "^2.0.3",
+        "qs": "latest",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "react-google-recaptcha-v3": "^1.9.7",
+        "react-is": "^18.0.0",
+        "react-query": "^3.34.19",
+        "react-redux": "^7.2.8",
+        "react-router-dom": "^6.3.0",
+        "react-scripts": "^5.0.1",
+        "react-use": "^17.3.2",
+        "redux": "latest",
+        "styled-components": "^5.3.5",
+        "typescript": "next",
+        "web-vitals": "^1.1.2",
+        "yup": "^0.32.11"
+      },
+      "scripts": {
+        "start": "cross-env NODE_ENV=development react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+      },
+      "eslintConfig": {
+        "extends": [
+          "react-app",
+          "react-app/jest"
+        ],
+        "overrides": [
+          {
+            "files": [
+              "**/*.stories.*"
+            ],
+            "rules": {
+              "import/no-anonymous-default-export": "off"
+            }
+          }
+        ]
+      },
+      "browserslist": {
+        "production": [
+          ">0.2%",
+          "not dead",
+          "not op_mini all"
+        ],
+        "development": [
+          "last 1 chrome version",
+          "last 1 firefox version",
+          "last 1 safari version"
+        ]
+      },
+      "devDependencies": {
+        "@testing-library/user-event": "^12.8.3",
+        "@types/react-dom": "^18.0.0",
+        "cross-env": "^7.0.3",
+        "react-dev-utils": "^11.0.4",
+        "webpack": "^5.72.0"
+      },
+      "pnpm": {
+        "overrides": {
+          "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+        }
+      }
+    },
+    "prefix": "/Users/gjus/Desktop/vlo-boards-full/VLO-ACCOUNTS/vlo-accounts-frontend"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/gjus/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/gjus/Desktop/vlo-boards-full/VLO-ACCOUNTS/vlo-accounts-frontend/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/Users/gjus/Desktop/vlo-boards-full/VLO-ACCOUNTS/vlo-accounts-frontend",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "@gkju/vlo-accounts-client-axios-ts is not in the npm registry, or you have no permission to fetch it.\n\nNo authorization header was set for the request.",
+    "request": {
+      "url": "https://registry.npmjs.org/@gkju%2Fvlo-accounts-client-axios-ts"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "@gkju/vlo-accounts-client-axios-ts",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npmjs.org/@gkju%2Fvlo-accounts-client-axios-ts: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npmjs.org/@gkju%2Fvlo-accounts-client-axios-ts: Not Found - 404\n    at RetryOperation._fn (/Users/gjus/.node/corepack/pnpm/6.23.6/dist/pnpm.cjs:85054:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+    }
+  }
+}

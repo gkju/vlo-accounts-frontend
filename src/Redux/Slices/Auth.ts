@@ -16,15 +16,15 @@ export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setLoggedIn(state, action: PayloadAction<{profile: IdTokenClaims}>) {
+        setLoggedIn(state: authState, action: PayloadAction<{profile: IdTokenClaims}>) {
             state.loggedIn = true;
             state.profile = action.payload.profile;
         },
-        setLoggedOut(state) {
+        setLoggedOut(state: authState) {
             state.loggedIn = false;
             state.profile = undefined;
         },
-        setLastKnownUrl(state, action: PayloadAction<{url: string}>) {
+        setLastKnownUrl(state: authState, action: PayloadAction<{url: string}>) {
             state.lastKnownUrl = action.payload.url;
         }
     }

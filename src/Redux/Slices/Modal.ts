@@ -19,10 +19,10 @@ export const modalSlice = createSlice({
     name: "modal",
     initialState,
     reducers: {
-        queueModal: (state, action: PayloadAction<modal>) => {
+        queueModal: (state: modalState, action: PayloadAction<modal>) => {
             state.modals.push(action.payload);
         },
-        deleteCurrentModal: (state) => {
+        deleteCurrentModal: (state: modalState) => {
             state.modals.shift();
         },
     },
