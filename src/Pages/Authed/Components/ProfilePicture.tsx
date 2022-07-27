@@ -3,6 +3,8 @@ import {useProfilePicture} from "../Queries";
 import {VLoader} from "@gkju/vlo-ui";
 import {isDevelopment} from "../../../Config";
 import styled from "styled-components";
+import {useSelector} from "react-redux";
+import {selectProfile} from "../../../Redux/Slices/Auth";
 
 interface ProfilePictureProps {
     Id: string
@@ -10,6 +12,7 @@ interface ProfilePictureProps {
 
 export const ProfilePicture: FunctionComponent<ProfilePictureProps> = (props) => {
     const { data, error, isLoading } = useProfilePicture(props.Id);
+    const profile = useSelector(selectProfile);
 
     if(isLoading) {
         return <VLoader />
@@ -25,6 +28,6 @@ export const ProfilePicture: FunctionComponent<ProfilePictureProps> = (props) =>
     }
 
     return (
-        <img src={data.data} alt="Zdjęcie profilowe" style={{width: "200px", height: "200px", borderRadius: "50%", objectFit: "cover", objectPosition:  "center"}} />
+        <img src={data.data.startsWith("http") ? data.data : `https://avatars.dicebear.com/api/identicon/${profile?.sub}.svg`} alt="Zdjęcie profilowe" style={{width: "200px", height: "200px", borderRadius: "50%", objectFit: "cover", objectPosition:  "center"}} />
     )
 }

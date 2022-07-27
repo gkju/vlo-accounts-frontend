@@ -28,7 +28,7 @@ if(container) {
 
     root.render(
         <React.StrictMode>
-            <QueryClientProvider client={queryClient}>
+            <QueryClientProvider client={queryClient} contextSharing={true}>
                 <Provider store={Store}>
                     <GoogleReCaptchaProvider reCaptchaKey={String(CaptchaConfig.CaptchaKey)}>
                         <ThemeProvider theme={theme}>

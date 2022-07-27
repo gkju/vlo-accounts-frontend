@@ -6,7 +6,10 @@ export interface modal {
     content: string,
     handler?: () => void,
     cancelHandler?: () => void,
-
+    buttonText?: string,
+    buttonStyle?: object,
+    cancelText?: string,
+    cancelStyle?: object
 }
 
 interface modalState {

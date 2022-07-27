@@ -11,7 +11,6 @@ export const Dashboard: FunctionComponent = (props) => {
     return (
       <Background>
           <Routes>
-
               <Route path="*" element={<AccountManagement />} />
           </Routes>
       </Background>
