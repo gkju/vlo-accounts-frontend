@@ -22,6 +22,10 @@ export const ProfilePicture: FunctionComponent<ProfilePictureProps> = (props) =>
         return <div>Error</div>
     }
 
+    if(!data?.data) {
+        return <div></div>;
+    }
+
     // TODO: find a better solution, ???
     if(isDevelopment) {
         data.data = data.data.replace("https", "http");

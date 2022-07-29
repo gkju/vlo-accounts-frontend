@@ -14,6 +14,7 @@ import { plPL } from '@mui/material/locale';
 import {createRoot} from "react-dom/client";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {ModalHandler} from "./Redux/ReactIntegrations/ModalHandler";
+import {MinimalistModalHandler} from "./Redux/ReactIntegrations/MinimalistModalHandler";
 
 const theme = createTheme(
     plPL
@@ -41,6 +42,7 @@ if(container) {
                                 }
                             </BrowserRouter>
                             <ModalHandler />
+                            <MinimalistModalHandler />
                         </ThemeProvider>
                     </GoogleReCaptchaProvider>
                 </Provider>

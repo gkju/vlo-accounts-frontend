@@ -28,7 +28,7 @@ export const LoginWithPassword: FunctionComponent<LoginWithPasswordProps> = (pro
         const captchaResponse = executeRecaptcha ? await executeRecaptcha("login") : "";
         try {
             let loginApi: LoginApi = new LoginApi(OpenApiSettings);
-            let response = await loginApi.apiAuthLoginPost(GetReturnUrl(window.location.search), {usernameOrEmail: values.username, password: values.password, rememberMe: true, captchaResponse});
+            let response = await loginApi.apiAuthLoginPost(GetReturnUrl(window.location.search), {userNameOrEmail: values.username, password: values.password, rememberMe: true, captchaResponse});
 
             if(response.status === 200) {
                 await NavigateToReturnUrl(returnUrl);
