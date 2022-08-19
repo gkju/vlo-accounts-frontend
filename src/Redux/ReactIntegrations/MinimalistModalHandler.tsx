@@ -8,17 +8,18 @@ import {GetBackground} from "../../ThemeProvider";
 
 export const MinimalistModalHandler : FunctionComponent = (props) => {
     const modalData = useSelector(selectCurrentMinimalistModal);
+    const [error, setError] = useState('');
 
     const closeHandler = () => {
         Store.dispatch(deleteCurrentMinimalistModal());
     };
 
-    const successHandler = (value: string) => {
-        modalData.handler(value);
+    const successHandler = async (value: string) => {
+        await modalData.handler(value);
         closeHandler();
     };
 
     return (
-        <MinimalModal open={modalData !== undefined} initialValue={modalData?.initialValue ?? ''} close={closeHandler} handler={successHandler} validator={modalData?.validator ?? console.warn} placeholder={modalData?.placeholder ?? ""} />
+        <MinimalModal open={modalData !== undefined} initialValue={modalData?.initialValue ?? ''} close={closeHandler} handler={successHandler} validator={modalData?.validator ?? (s => "jd")} placeholder={modalData?.placeholder ?? ""} />
     );
 };

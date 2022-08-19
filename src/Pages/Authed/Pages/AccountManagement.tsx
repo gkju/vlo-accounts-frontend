@@ -19,8 +19,12 @@ export const AccountManagement: FunctionComponent = () => {
     }
 
     const editUserNameHandler: React.MouseEventHandler = (e) => {
-        Store.dispatch(queueMinimalistModal({initialValue: data?.data.userName ?? "", handler: console.log, placeholder: "nazwa uż", validator: (s: string) => s.length > 4}))
-    };
+        Store.dispatch(queueMinimalistModal({
+            initialValue: data?.data.userName ?? "",
+            handler: (s: string) => {if(s.length < 5) throw new Error("Za krótka")},
+            placeholder: "nazwa uż",
+            validator: (s: string) => {if(s.length < 4) throw new Error("Za krótka")},
+    }))};
 
     return (
     <Wrapper>

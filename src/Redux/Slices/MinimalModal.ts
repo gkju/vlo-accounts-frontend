@@ -5,7 +5,7 @@ import {RootState} from "../Store/Store";
 export interface minimalModal {
     handler: (input: string) => void;
     placeholder: string;
-    validator: (input: string) => boolean,
+    validator: (input: string) => void,
     initialValue?: string,
 }
 
