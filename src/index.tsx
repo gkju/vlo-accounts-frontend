@@ -15,6 +15,10 @@ import {createRoot} from "react-dom/client";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {ModalHandler} from "./Redux/ReactIntegrations/ModalHandler";
 import {MinimalistModalHandler} from "./Redux/ReactIntegrations/MinimalistModalHandler";
+import {Privacy} from "./Privacy";
+import {LogoutRequest} from "./Auth/LogoutRequest";
+import {LogoutCallback} from "./Auth/LogoutCallback";
+import {Logout} from "./Auth/Logout";
 
 const theme = createTheme(
     plPL
@@ -35,6 +39,9 @@ if(container) {
                         <ThemeProvider theme={theme}>
                             <BrowserRouter>
                                 <Routes>
+                                    <Route path="/LogoutRequest" element={<LogoutRequest />} />
+                                    <Route path="/Logout" element={<Logout />} />
+                                    <Route path="/logout-callback" element={<LogoutCallback />} />
                                     <Route path="/login-callback" element={<LoginCallback />} />
                                 </Routes>
                                 {window === window.parent &&

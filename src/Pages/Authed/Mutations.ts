@@ -1,13 +1,15 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import { OpenApiSettings } from "../../Config";
-import {ProfilePictureApi} from "@gkju/vlo-accounts-client-axios-ts";
+import {ChangeUserNameApi, ProfilePictureApi} from "@gkju/vlo-accounts-client-axios-ts";
 import axios, {AxiosError} from "axios";
+import {profileInfo, profilePicture} from "./Constants";
 
-const instance = axios.create({
+export const instance = axios.create({
     withCredentials: true
-})
+});
 
 const pfpApi = new ProfilePictureApi(OpenApiSettings, undefined, instance);
+const changeUserNameApi = new ChangeUserNameApi(OpenApiSettings, undefined, instance);
 
 export const useSetPfp = () => {
     const queryClient = useQueryClient();
@@ -17,7 +19,7 @@ export const useSetPfp = () => {
         },
         {
         onSettled: () => {
-            queryClient.invalidateQueries(["profilePicture"])
+            queryClient.invalidateQueries([profilePicture])
         }
     });
 };
@@ -30,7 +32,25 @@ export const useDeletePfp = () => {
         },
         {
             onSettled: () => {
-                queryClient.invalidateQueries(["profilePicture"])
+                queryClient.invalidateQueries([profilePicture])
             }
         });
-}
+};
+
+export const UnwrapErrors = async (fn: Function) => {
+    try {
+        await fn();
+    } catch (e: any) {
+        // @ts-ignore
+        throw new Error(Object.values(e.response.data.errors)[0]?.at(0));
+    }
+};
+
+export const useChangeUserName = () => {
+    const queryClient = useQueryClient();
+    return async (userName: string) => {
+        await UnwrapErrors(() => changeUserNameApi.apiAuthChangeUserNamePost(userName));
+        //await changeUserNameApi.apiAuthChangeUserNamePost(userName);
+        await queryClient.invalidateQueries([profileInfo]);
+    };
+};

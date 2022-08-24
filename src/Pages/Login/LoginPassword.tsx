@@ -24,6 +24,10 @@ export const LoginWithPassword: FunctionComponent<LoginWithPasswordProps> = (pro
     // TODO refactor client error processing when receiving errors in body (new unified format)
 
     const handleSubmit = async (values: FormikValues) => {
+        if(Formik.isSubmitting) {
+            return;
+        }
+
         setLoginError("");
         const captchaResponse = executeRecaptcha ? await executeRecaptcha("login") : "";
         try {

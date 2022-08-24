@@ -7,6 +7,7 @@ export interface minimalModal {
     placeholder: string;
     validator: (input: string) => void,
     initialValue?: string,
+    password?: boolean,
 }
 
 interface minimalistModalState {

@@ -12,10 +12,12 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 30vh 50vh 20vh;
   width: 100%;
+  height: 100%;
 `
 
 export const Bg = styled.div`
   width: 100%;
+  height: 100%;
   background-image: Url("${vlobg}");
   background-position-y: top;
   background-position-x: center;

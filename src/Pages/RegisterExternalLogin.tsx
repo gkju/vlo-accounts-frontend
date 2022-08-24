@@ -11,6 +11,7 @@ import { ExternalLoginApi} from "@gkju/vlo-accounts-client-axios-ts";
 import {OpenApiSettings} from "../Config";
 import {GetReturnUrl} from "../Utils";
 import {useNavigate} from "react-router-dom";
+import {UnwrapErrors} from "./Authed/Mutations";
 
 export const RegisterExternalLogin: FunctionComponent = (props) => {
     const returnUrl = GetReturnUrl(window.location.search);
@@ -21,21 +22,17 @@ export const RegisterExternalLogin: FunctionComponent = (props) => {
 
         try {
             let externalLoginApi = new ExternalLoginApi(OpenApiSettings);
-            let response = await externalLoginApi.apiAuthExternalLoginCreateAccountPost( {username: values.username, email: values.email});
-            if(response.status === 200) {
-                setModal(true);
-            }
+            let response = await UnwrapErrors(async () => await externalLoginApi.apiAuthExternalLoginCreateAccountPost( {username: values.username, email: values.email}));
+            setModal(true);
+
         } catch (res: any) {
-            let response = res.response;
-            if(response.status === 400) {
-                setRegisterError(response.data[""][0]);
-            }
+            setRegisterError(res.toString());
         }
 
     }
 
     const Formik = useFormik(        {
-        initialValues: {username: qs.parse(window.location.search.substr(1))["username"] || "", email: qs.parse(window.location.search.substr(1))["email"] || ""},
+        initialValues: {username: qs.parse(window.location.search.substring(1))["username"] || "", email: qs.parse(window.location.search.substr(1))["email"] || ""},
         onSubmit: handleSubmit,
         validationSchema: Yup.object({
             username: Yup.string()

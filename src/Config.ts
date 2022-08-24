@@ -2,6 +2,7 @@ import {WebStorageStateStore} from "oidc-client-ts";
 import {Configuration} from "@gkju/vlo-accounts-client-axios-ts";
 import authService from "./Auth/AuthService";
 import {UserManagerSettings} from "oidc-client-ts";
+import AuthService from "./Auth/AuthService";
 
 export const CaptchaConfig = {
   CaptchaKey: "6LfvfoAaAAAAAArJt9n55Z-7WbwCJccw2QAGNOCS"
@@ -33,6 +34,7 @@ export const authoritySettings: UserManagerSettings = {
   automaticSilentRenew: true
 };
 
-export const OpenApiSettings : Configuration = new Configuration({
-  basePath: apiOrigin
+export const OpenApiSettings = new Configuration({
+  basePath: apiOrigin,
+  accessToken: AuthService.GetToken
 });

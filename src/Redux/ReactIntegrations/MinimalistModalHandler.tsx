@@ -16,10 +16,9 @@ export const MinimalistModalHandler : FunctionComponent = (props) => {
 
     const successHandler = async (value: string) => {
         await modalData.handler(value);
-        closeHandler();
     };
 
     return (
-        <MinimalModal open={modalData !== undefined} initialValue={modalData?.initialValue ?? ''} close={closeHandler} handler={successHandler} validator={modalData?.validator ?? (s => "jd")} placeholder={modalData?.placeholder ?? ""} />
+        <MinimalModal password={modalData?.password ?? false} open={modalData !== undefined} initialValue={modalData?.initialValue ?? ''} close={closeHandler} handler={successHandler} validator={modalData?.validator ?? (s => "jd")} placeholder={modalData?.placeholder ?? ""} />
     );
 };

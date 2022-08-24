@@ -27,7 +27,6 @@ export const EditableProfilePicture: FunctionComponent<props> = (props) => {
 
     const prevDP = (e: Event | React.DragEvent) => {
         e.preventDefault();
-        e.stopPropagation();
     }
 
     const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -139,6 +138,7 @@ const EditIcon = styled(motion.div)`
     pointer-events: none;
     color: white;
     z-index: 1;
+    opacity: 0;
 `;
 
 const HideOverflow = styled(motion.div)`

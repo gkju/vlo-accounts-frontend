@@ -41,6 +41,21 @@ class AuthService {
         return true;
     }
 
+    async processSignOutUrl(url: string) {
+        await this.ensureUserManagerCreated();
+        // fixes intellisense
+        if(!this.userManager) {
+            return false;
+        }
+
+        await this.userManager.signoutCallback(url);
+        return true;
+    }
+
+    async signOut() {
+        await this.userManager?.signoutRedirect();
+    }
+
     async setUser() {
         await this.ensureUserManagerCreated();
         // fixes intellisense, cannot be in separate function
