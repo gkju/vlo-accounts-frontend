@@ -1,6 +1,6 @@
 import {FunctionComponent, useState} from "react";
 import {Logo} from "../Logo";
-import {Button, TextInput, InputSize} from "@gkju/vlo-ui";
+import {Button, TextInput, InputSize, RippleAble} from "@gkju/vlo-ui";
 import {Form, FormikProvider, FormikValues, useFormik} from "formik";
 import * as Yup from 'yup';
 import {motion} from "framer-motion";
@@ -18,6 +18,8 @@ import styled from "styled-components";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import {Gite} from "@mui/icons-material";
+import {fidoLogin} from "./Login/Fido";
+import {Link, useNavigate} from "react-router-dom";
 
 const getExternalProviderUrl = (provider: string) => {
     return apiOrigin + apiLocation + `/Auth/ExternalLogin?provider=${provider}` + (window.location.search.length > 1 ? "&" + window.location.search.substring(1) : "");
@@ -37,6 +39,7 @@ const navigateTwitter = () => {
 
 export const Login: FunctionComponent = (props) => {
     const { executeRecaptcha } = useGoogleReCaptcha();
+    const navigate = useNavigate();
 
     let error: string = String(qs.parse(window.location.search.substr(1))["error"]);
 
@@ -52,6 +55,10 @@ export const Login: FunctionComponent = (props) => {
         }
     })
 
+    const fidoHandler = () => {
+        fidoLogin();
+    }
+
     return (
         <Layout>
             <Container>
@@ -63,14 +70,59 @@ export const Login: FunctionComponent = (props) => {
                     </InputWrapper>
                     <Wrapper>
                         <GitHubIcon onPointerDown={navigateMicrosoft} style={{margin: "0 10px", cursor: "pointer", fontSize: "64px", background: "white", borderRadius: "50%", boxShadow: "inset 0 0 0 5px black"}} />
+                        <RippleAble>
+                            <StyledButton onPointerUp={fidoHandler}>
+                                F<StyledSpan>ID</StyledSpan>O
+                            </StyledButton>
+                        </RippleAble>
                         <TwitterIcon onPointerDown={navigateTwitter} style={{margin: "0 10px", cursor: "pointer", fontSize: "50px", padding: "7px", background: "white", borderRadius: "50%", color: "#1DA1F2"}} />
                     </Wrapper>
+                    <TextWrapper onPointerUp={() => navigate("/FidoRegister")}>
+                            Zarejestruj się z FIDO (rekomendowane)
+                    </TextWrapper>
                 </section>
             </Container>
             <Bg/>
         </Layout>
     )
 }
+
+const TextWrapper = styled.div`
+  color: #A1A1A1;
+  opacity: 0.5;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin: 5px;
+  cursor: pointer;
+`;
+
+const StyledSpan = styled.span`
+    color: #FEBF3B;
+`
+
+const StyledButton = styled.button`
+  height: 100%;
+  width: 100px;
+  border-radius: 10px;
+  color: #231F20;
+  font-famliy: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  
+  border: none;
+  outline: none;
+  
+  &:hover {
+    outline: none;
+    border: none;
+    filter: brightness(90%);
+  }
+
+  &:active {
+    outline: none;
+    border: none;
+  }
+`;
 
 const Wrapper = styled.div`
   display: flex;

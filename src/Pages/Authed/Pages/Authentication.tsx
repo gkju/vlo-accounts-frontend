@@ -25,6 +25,7 @@ import {instance, UnwrapErrors} from "../Mutations";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 import {profileInfo} from "../Constants";
 import {useQueryClient} from "react-query";
+import {fidoAdd} from "../../Login/Fido";
 
 export const Authentication: FunctionComponent = () => {
     const profile = useSelector(selectProfile);
@@ -85,6 +86,10 @@ export const Authentication: FunctionComponent = () => {
         });
     }
 
+    const addFido = async () => {
+        await fidoAdd();
+    }
+
     return (
         <Wrapper style={{paddingLeft: horizontal ? "0" : "70px"}}>
             <Intro>
@@ -105,6 +110,11 @@ export const Authentication: FunctionComponent = () => {
                     <SectionLegend>Hasło <img style={{height: "10px"}} src={argon} /></SectionLegend>
                     <SectionValue>{isLoading ? <Skeleton animation="wave" /> : !hasPassword(data?.data.passwordHash ?? "") ? "Brak" : "Tak"}</SectionValue>
                     <StyledEditButton onPointerUp={handlePasswordEdit} />
+                </SectionItem>
+                <SectionItem>
+                    <SectionLegend>Fido</SectionLegend>
+                    <SectionValue>{isLoading || !data?.data ? <Skeleton animation="wave" /> : data.data?.fidoCredentials && data.data?.fidoCredentials.length ? `Tak (${data.data.fidoCredentials.length})` : "Brak"}</SectionValue>
+                    <StyledEditButton onPointerUp={addFido} text="Dodaj" />
                 </SectionItem>
             </Section>
         </Wrapper>
