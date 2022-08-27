@@ -41,7 +41,7 @@ export const Login: FunctionComponent = (props) => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const navigate = useNavigate();
 
-    let error: string = String(qs.parse(window.location.search.substr(1))["error"]);
+    let error: string = String(qs.parse(window.location.search.substring(1))["error"]);
 
     if(error === "undefined") {
         error = "";

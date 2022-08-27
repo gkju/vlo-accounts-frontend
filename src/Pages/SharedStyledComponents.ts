@@ -10,7 +10,7 @@ export const Layout = styled.div`
 export const Container = styled.div`
   background: ${theme.primary};
   display: grid;
-  grid-template-rows: 25vh 50vh 25vh;
+  grid-template-rows: 30vh 50vh 20vh;
   width: 100%;
   height: 100%;
 `
@@ -28,7 +28,7 @@ export const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  margin: 45px 0;
+  margin: 35px 0;
   touch-action: manipulation;
 `
 

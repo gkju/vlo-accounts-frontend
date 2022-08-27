@@ -19,6 +19,7 @@ import {Privacy} from "./Privacy";
 import {LogoutRequest} from "./Auth/LogoutRequest";
 import {LogoutCallback} from "./Auth/LogoutCallback";
 import {Logout} from "./Auth/Logout";
+import {ConfirmEmail} from "./Pages/Login/ConfirmEmail";
 
 const theme = createTheme(
     plPL
@@ -43,6 +44,7 @@ if(container) {
                                     <Route path="/Logout" element={<Logout />} />
                                     <Route path="/logout-callback" element={<LogoutCallback />} />
                                     <Route path="/login-callback" element={<LoginCallback />} />
+                                    <Route path="/ConfirmEmail" element={<ConfirmEmail />} />
                                 </Routes>
                                 {window === window.parent &&
                                     <OIDCLogon/>

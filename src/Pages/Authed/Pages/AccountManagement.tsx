@@ -9,12 +9,13 @@ import {Skeleton} from "@mui/material";
 import {minimalModal, queueMinimalistModal} from "../../../Redux/Slices/MinimalModal";
 import Store from "../../../Redux/Store/Store";
 import {instance, UnwrapErrors, useChangeUserName} from "../Mutations";
-import {Internationalization} from "../Constants";
+import {Internationalization, profileInfo} from "../Constants";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 import {RequestEmailChangeApi} from "@gkju/vlo-accounts-client-axios-ts";
 import {OpenApiSettings} from "../../../Config";
 import {motion} from "framer-motion";
 import {useLocation, useWindowSize} from "react-use";
+import {useQueryClient} from "react-query";
 export const createMinimalistModal = (p: minimalModal) => Store.dispatch(queueMinimalistModal(p));
 
 export const AccountManagement: FunctionComponent = () => {
@@ -26,6 +27,7 @@ export const AccountManagement: FunctionComponent = () => {
     const getCaptchaResponse = async () => executeRecaptcha ? await executeRecaptcha("account_management") : '';
     const { width } = useWindowSize();
     const horizontal = width < 800;
+    const queryClient = useQueryClient();
     // Store.dispatch(queueMinimalistModal({validator: s => s.length > 4, placeholder: "Nazwa użytkownika", handler: console.log}));
 
     const editUserNameHandler: React.MouseEventHandler = useCallback((e) => {
@@ -43,11 +45,12 @@ export const AccountManagement: FunctionComponent = () => {
             handler: async (s) => {
                 let api = new RequestEmailChangeApi(OpenApiSettings, "", instance);
                 await UnwrapErrors(async () => await api.apiAuthRequestEmailChangePut({code: s, captchaResponse: await getCaptchaResponse()}));
+                queryClient.invalidateQueries([profileInfo]);
             },
             placeholder: "Kod wysłany na podany adres e-mail",
             validator: s => {if(s.length < 6) throw new Error("Niepoprawny kod")},
         });
-    }, [getCaptchaResponse]);
+    }, [getCaptchaResponse, queryClient]);
 
     const changeEmailHandler = useCallback(() => {
         createMinimalistModal({

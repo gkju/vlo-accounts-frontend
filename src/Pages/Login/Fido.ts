@@ -99,7 +99,6 @@ const fidoLoginNoRegister = async (input: string) => {
             throw new Error();
         }
         // webauthn chicanery
-        console.log(makeAssertionOptions);
         const options: any = {};
         Object.assign(options, makeAssertionOptions);
         const challenge = makeAssertionOptions.challenge.replace(/-/g, "+").replace(/_/g, "/");
