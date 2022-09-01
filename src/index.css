@@ -4,6 +4,7 @@
 body, html {
     margin: 0;
     padding: 0;
+    background: #1D1D28;
 }
 
 .locked {

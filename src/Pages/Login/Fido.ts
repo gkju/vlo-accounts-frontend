@@ -8,6 +8,8 @@ import {OpenApiSettings} from "../../Config";
 import {instance} from "../Authed/Mutations";
 import {useNavigate} from "react-router-dom";
 import authService from "../../Auth/AuthService";
+import {NavigateToReturnUrl} from "../ReturnUrlUtils";
+import {GetReturnUrl} from "../../Utils";
 
 export const fidoLogin = async () => {
     createMinimalistModal({
@@ -129,9 +131,11 @@ const fidoLoginNoRegister = async (input: string) => {
                 signature: coerceToBase64Url(sig)
             }
         });
-        await authService.signInSilent();
+
+        const returnUrl = GetReturnUrl(window.location.search);
+        await NavigateToReturnUrl(returnUrl);
     } catch (e) {
-        throw new Error("Niepoprawne dane logowania");
+        throw new Error("Niepoprawne dane logowania lub niepotwierdzony adres e-mail");
     }
 
 }

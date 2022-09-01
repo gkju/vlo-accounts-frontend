@@ -7,8 +7,12 @@ import {selectLastKnownUrl} from "../Redux/Slices/Auth";
 export const LogoutCallback: FunctionComponent = (props) => {
 
     useMount(async () => {
-        const res = await authService.processSignOutUrl(window.location.href);
-        if(res) {
+        try {
+            const res = await authService.processSignOutUrl(window.location.href);
+            if(res) {
+                window.location.replace("/");
+            }
+        } catch (e) {
             window.location.replace("/");
         }
     })

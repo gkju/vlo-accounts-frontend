@@ -16,6 +16,7 @@ import {OpenApiSettings} from "../../../Config";
 import {motion} from "framer-motion";
 import {useLocation, useWindowSize} from "react-use";
 import {useQueryClient} from "react-query";
+import authService from "../../../Auth/AuthService";
 export const createMinimalistModal = (p: minimalModal) => Store.dispatch(queueMinimalistModal(p));
 
 export const AccountManagement: FunctionComponent = () => {

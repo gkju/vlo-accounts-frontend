@@ -77,9 +77,9 @@ export const EditableProfilePicture: FunctionComponent<props> = (props) => {
             multiple: false
         };
         // @ts-ignore
-        if(Window?.showOpenFilePicker) {
+        if(window?.showOpenFilePicker) {
             // @ts-ignore
-            let files: FileSystemFileHandle[] = await Window.showOpenFilePicker(opts);
+            let files: FileSystemFileHandle[] = await window.showOpenFilePicker(opts);
             for(let file of files) {
                 upload(await file.getFile());
             }
@@ -96,7 +96,7 @@ export const EditableProfilePicture: FunctionComponent<props> = (props) => {
     }
 
     return (
-        <Wrapper onDragOver={e => {prevDP(e);}} onDrop={e => {prevDP(e); handleDrop(e)}}
+        <Wrapper onPointerUp={handleClick} onDragOver={e => {prevDP(e);}} onDrop={e => {prevDP(e); handleDrop(e)}}
                  onDragEnter={(e) => {setHover(true); prevDP(e);}} onDragLeave={(e) => {setHover(false); prevDP(e);}}>
             <HideOverflow onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <motion.div title="Przeciągnij zdjęcie profilowe lub naciśnij w kompatybilnej przeglądarce" animate={{scale: hover ? 1.05 : 1}} transition={{duration: 0.35}}>

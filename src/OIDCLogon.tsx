@@ -16,14 +16,9 @@ export const OIDCLogon: FunctionComponent<OIDCLogonProps> = (props) => {
 
     useMount(async () => {
         if(!loggedIn) {
-            try {
-                await authService.signInSilent();
-            } catch (e) {
-
-            }
-            setReady(true);
-        } else {
-            setReady(true);
+            authService.signInSilent()
+                .then(() => setReady(true))
+                .catch(() => setReady(true));
         }
     })
 

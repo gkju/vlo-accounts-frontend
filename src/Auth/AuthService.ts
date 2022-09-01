@@ -29,6 +29,28 @@ class AuthService {
         await this.setUser();
     }
 
+    async signInPopUp() {
+        await this.ensureUserManagerCreated();
+        // fixes intellisense
+        if(!this.userManager) {
+            return;
+        }
+
+        await this.userManager.signinPopup()
+        await this.setUser();
+    }
+
+    async signInRedirect() {
+        await this.ensureUserManagerCreated();
+        // fixes intellisense
+        if(!this.userManager) {
+            return;
+        }
+
+        await this.userManager.signinRedirect();
+        await this.setUser();
+    }
+
     async processSignInUrl(url: string): Promise<boolean> {
         await this.ensureUserManagerCreated();
         // fixes intellisense

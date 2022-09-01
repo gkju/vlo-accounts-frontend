@@ -7,10 +7,15 @@ import {selectLastKnownUrl} from "../Redux/Slices/Auth";
 export const LoginCallback: FunctionComponent = (props) => {
 
     useMount(async () => {
-        const res = await authService.processSignInUrl(window.location.href);
-        if(res) {
+        try {
+            const res = await authService.processSignInUrl(window.location.href);
+            if(res) {
+                window.location.replace("/");
+            }
+        } catch (e) {
             window.location.replace("/");
         }
+
     })
 
     return (

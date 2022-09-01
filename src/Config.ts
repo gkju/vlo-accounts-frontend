@@ -14,18 +14,18 @@ const otherAuthSettings = {
 
 export const isDevelopment = process.env.NODE_ENV === "development";
 
-export const frontendOrigin = isDevelopment ? "http://localhost:3000" : "https://suvlo.pl";
-export const apiOrigin = isDevelopment ? "https://localhost:5001" : "https://suvlo.pl";
+export const frontendOrigin = isDevelopment ? "http://localhost:3000" : "https://accounts.suvlo.pl";
+export const apiOrigin = isDevelopment ? "https://localhost:5001" : "https://accounts.suvlo.pl";
 
 export const apiLocation = "/api";
 
 export const authoritySettings: UserManagerSettings = {
   authority: apiOrigin + "/",
-  client_id: "VLO_BOARDS",
+  client_id: isDevelopment ? "VLO_BOARDS_DEV" : "VLO_BOARDS",
   redirect_uri: frontendOrigin + "/login-callback",
   silent_redirect_uri: frontendOrigin + "/login-callback",
   response_type: "code",
-  scope:"openid profile VLO_BOARDS",
+  scope:"openid profile main.general",
   post_logout_redirect_uri : frontendOrigin + "/logout-callback",
   userStore: new WebStorageStateStore({
     prefix: otherAuthSettings.WebStoragePrefix
@@ -36,5 +36,5 @@ export const authoritySettings: UserManagerSettings = {
 
 export const OpenApiSettings = new Configuration({
   basePath: apiOrigin,
-  accessToken: AuthService.GetToken
+  accessToken: authService.GetToken
 });
