@@ -13,6 +13,7 @@ export const ConfirmEmail: FunctionComponent = (props) => {
     const navigate = useNavigate();
     const getCaptchaResponse = async () => executeRecaptcha ? await executeRecaptcha("confirm_email") : '';
     const code = qs.parse(window.location.search.substring(1))["code"];
+    const id = qs.parse(window.location.search.substring(1))["userId"];
 
     useEffect(() => {
         (async () => {
@@ -20,7 +21,8 @@ export const ConfirmEmail: FunctionComponent = (props) => {
             const api = new ConfirmEmailApi(OpenApiSettings, "", instance);
             await api.apiAuthConfirmEmailPost({
                 code: String(code),
-                captchaResponse: response
+                captchaResponse: response,
+                userId: String(id)
             });
             navigate("/");
         })();

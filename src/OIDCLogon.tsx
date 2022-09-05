@@ -15,11 +15,14 @@ export const OIDCLogon: FunctionComponent<OIDCLogonProps> = (props) => {
     const [ready, setReady] = useState(false);
 
     useMount(async () => {
-        if(!loggedIn) {
-            authService.signInSilent()
-                .then(() => setReady(true))
-                .catch(() => setReady(true));
+        try {
+            if(!loggedIn) {
+                await authService.signInSilent();
+            }
+        } catch (e) {
+
         }
+        setReady(true);
     })
 
     return (

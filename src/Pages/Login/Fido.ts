@@ -132,6 +132,7 @@ const fidoLoginNoRegister = async (input: string) => {
             }
         });
 
+
         const returnUrl = GetReturnUrl(window.location.search);
         await NavigateToReturnUrl(returnUrl);
     } catch (e) {

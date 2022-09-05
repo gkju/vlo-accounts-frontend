@@ -9,9 +9,6 @@ export const LoginCallback: FunctionComponent = (props) => {
     useMount(async () => {
         try {
             const res = await authService.processSignInUrl(window.location.href);
-            if(res) {
-                window.location.replace("/");
-            }
         } catch (e) {
             window.location.replace("/");
         }

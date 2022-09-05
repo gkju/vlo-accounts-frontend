@@ -7,6 +7,8 @@ import {Logout} from "@mui/icons-material";
 import {LogoutCallback} from "./Auth/LogoutCallback";
 import {FidoRegister} from "./Pages/Login/FidoRegister";
 import {ConfirmEmail} from "./Pages/Login/ConfirmEmail";
+import {LogoutRequest} from "./Auth/LogoutRequest";
+import {LoginCallback} from "./Auth/LoginCallback";
 
 type RoutesProps = {
 
@@ -18,8 +20,10 @@ export const UnAuthedRoutes: FunctionComponent<RoutesProps> = (props) => {
         <Routes>
             <Route path="/ConfirmEmail" element={<ConfirmEmail />} />
             <Route path="/FidoRegister" element={<FidoRegister />} />
+            <Route path="/LogoutRequest" element={<LogoutRequest />} />
             <Route path="/Logout" element={<Logout />} />
             <Route path="/logout-callback" element={<LogoutCallback />} />
+            <Route path="/login-callback" element={<LoginCallback />} />
             <Route path="/Privacy" element={<Privacy />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/RegisterExternalLogin" element={<RegisterExternalLogin />} />
