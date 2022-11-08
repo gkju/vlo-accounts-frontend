@@ -19,13 +19,13 @@ import { VLoader } from "@gkju/vlo-ui";
 import {useLocation, useWindowSize} from "react-use";
 import argon from "../argon2-logo.svg";
 import {queueMinimalistModal} from "../../../Redux/Slices/MinimalModal";
-import {ChangePasswordApi, SetPasswordApi } from "@gkju/vlo-accounts-client-axios-ts";
 import {OpenApiSettings} from "../../../Config";
 import {instance, UnwrapErrors} from "../Mutations";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 import {profileInfo} from "../Constants";
 import {useQueryClient} from "react-query";
 import {fidoAdd} from "../../Login/Fido";
+import {ChangePasswordApi, SetPasswordApi} from "@gkju/vlo-accounts-client-axios-ts";
 
 export const Authentication: FunctionComponent = () => {
     const profile = useSelector(selectProfile);
@@ -53,7 +53,7 @@ export const Authentication: FunctionComponent = () => {
             handler: async (s) => {
                 let api = new SetPasswordApi(OpenApiSettings, "", instance);
                 await UnwrapErrors(async () => await api.apiAuthSetPasswordPut(s));
-                if(hasPassword(data?.data.passwordHash ?? "")) {
+                if(data?.data.hasPassword) {
                     await handleOldPassword(s);
                 } else {
                     await UnwrapErrors(async () => await api.apiAuthSetPasswordPost({newPassword: s}));
@@ -108,12 +108,12 @@ export const Authentication: FunctionComponent = () => {
             <Section key={route.pathname} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
                 <SectionItem>
                     <SectionLegend>Hasło <img style={{height: "10px"}} src={argon} /></SectionLegend>
-                    <SectionValue>{isLoading ? <Skeleton animation="wave" /> : !hasPassword(data?.data.passwordHash ?? "") ? "Brak" : "Tak"}</SectionValue>
+                    <SectionValue>{isLoading ? <Skeleton animation="wave" /> : !(data?.data.hasPassword) ? "Brak" : "Tak"}</SectionValue>
                     <StyledEditButton onPointerUp={handlePasswordEdit} />
                 </SectionItem>
                 <SectionItem>
                     <SectionLegend>Fido</SectionLegend>
-                    <SectionValue>{isLoading || !data?.data ? <Skeleton animation="wave" /> : data.data?.fidoCredentials && data.data?.fidoCredentials.length ? `Tak (${data.data.fidoCredentials.length})` : "Brak"}</SectionValue>
+                    <SectionValue>{isLoading || !data?.data ? <Skeleton animation="wave" /> : data.data?.fidoCount ?? 0 > 0 ? `Tak (${data.data.fidoCount})` : "Brak"}</SectionValue>
                     <StyledEditButton onPointerUp={addFido} text="Dodaj" />
                 </SectionItem>
             </Section>

@@ -37,9 +37,9 @@ export const useDeletePfp = () => {
         });
 };
 
-export const UnwrapErrors = async (fn: Function) => {
+export async function UnwrapErrors<T> (fn: () => T): Promise<T> {
     try {
-        await fn();
+        return await fn();
     } catch (e: any) {
         // @ts-ignore
         throw new Error(Object.values(e.response.data.errors)[0]?.at(0));

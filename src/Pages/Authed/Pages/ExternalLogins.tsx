@@ -65,6 +65,9 @@ export const ExternalLogins: FunctionComponent = () => {
 
     const addProvider = async (loginProvider: string) => {
         let api = new ExternalLoginsManagementApi(OpenApiSettings, "", instance);
+
+        window.location.href = "api/Auth/ExternalLoginsManagement/GetChallenge?provider=" + loginProvider;
+
         await api.apiAuthExternalLoginsManagementGetChallengePost(loginProvider);
 
 

@@ -20,6 +20,7 @@ import {LogoutRequest} from "./Auth/LogoutRequest";
 import {LogoutCallback} from "./Auth/LogoutCallback";
 import {Logout} from "./Auth/Logout";
 import {ConfirmEmail} from "./Pages/Login/ConfirmEmail";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const theme = createTheme(
     plPL
@@ -60,7 +61,7 @@ if(container) {
     );
 }
 
-
+serviceWorkerRegistration.register();
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

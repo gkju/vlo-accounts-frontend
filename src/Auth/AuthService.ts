@@ -58,7 +58,12 @@ class AuthService {
             return false;
         }
 
-        await this.userManager.signinCallback(url);
+        try {
+            await this.userManager.signinCallback(url);
+        } catch (e) {
+            console.error(e);
+        }
+
         await this.setUser();
         return true;
     }

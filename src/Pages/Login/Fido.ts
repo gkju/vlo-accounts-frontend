@@ -2,7 +2,7 @@ import {createMinimalistModal} from "../Authed/Pages/AccountManagement";
 import {
     Fido2NetLibAssertionOptions,
     Fido2NetLibCredentialCreateOptions,
-    FidoApi
+    FidoApi,
 } from "@gkju/vlo-accounts-client-axios-ts";
 import {OpenApiSettings} from "../../Config";
 import {instance} from "../Authed/Mutations";
@@ -29,7 +29,7 @@ export const fidoAdd = async () => {
     let authType = "";
     let userVerification = "preferred";
     let requireResidentKey = false;
-    let opts = (await api.makeCredentialOptionsPost({
+    let opts = (await api.apiAuthFidoMakeCredentialOptionsPost({
         attType,
         authType,
         userVerification,
@@ -45,7 +45,7 @@ export const fidoRegister = async (userName: string, email: string, captchaRespo
     let userVerification = "preferred";
     let requireResidentKey = false;
     let api = new FidoApi(OpenApiSettings, "", instance);
-    let opts = (await api.fidoRegisterUserPost({
+    let opts = (await api.apiAuthFidoFidoRegisterUserPost({
         userName,
         email,
         attType,
@@ -77,7 +77,7 @@ const handleOpts = async (opts: Fido2NetLibCredentialCreateOptions) => {
     let attestationObject = new Uint8Array(newCredential.response.attestationObject);
     let clientDataJSON = new Uint8Array(newCredential.response.clientDataJSON);
     let rawId = new Uint8Array(newCredential.rawId);
-    await api.makeCredentialPost({
+    await api.apiAuthFidoMakeCredentialPost({
         id: newCredential.id,
         rawId: coerceToBase64Url(rawId),
         type: newCredential.type,
@@ -96,7 +96,7 @@ const fidoLoginNoRegister = async (input: string) => {
     let api = new FidoApi(OpenApiSettings, "", instance);
 
     try {
-        let makeAssertionOptions: Fido2NetLibAssertionOptions = (await api.assertionOptionsPost(input)).data;
+        let makeAssertionOptions: Fido2NetLibAssertionOptions = (await api.apiAuthFidoAssertionOptionsPost(input)).data;
         if(!makeAssertionOptions?.challenge || !makeAssertionOptions?.allowCredentials) {
             throw new Error();
         }
@@ -120,7 +120,7 @@ const fidoLoginNoRegister = async (input: string) => {
         let clientDataJSON = new Uint8Array(credential.response.clientDataJSON);
         let rawId = new Uint8Array(credential.rawId);
         let sig = new Uint8Array(credential.response?.signature);
-        await api.makeAssertionPost({
+        await api.apiAuthFidoMakeAssertionPost({
             id: credential.id,
             rawId: coerceToBase64Url(rawId),
             type: credential.type,

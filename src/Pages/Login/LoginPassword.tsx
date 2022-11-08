@@ -9,6 +9,7 @@ import {GetReturnUrl} from "../../Utils";
 import {NavigateToReturnUrl} from "../ReturnUrlUtils";
 import * as Yup from "yup";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
+import {UnwrapErrors} from "../Authed/Mutations";
 
 interface LoginWithPasswordProps {
     loginError: string,
@@ -28,7 +29,7 @@ export const LoginWithPassword: FunctionComponent<LoginWithPasswordProps> = (pro
         const captchaResponse = executeRecaptcha ? await executeRecaptcha("login") : "";
         try {
             let loginApi: LoginApi = new LoginApi(OpenApiSettings);
-            let response = await loginApi.apiAuthLoginPost(GetReturnUrl(window.location.search), {userNameOrEmail: values.username, password: values.password, rememberMe: true, captchaResponse});
+            let response = await UnwrapErrors(async () => loginApi.apiAuthLoginPost(GetReturnUrl(window.location.search), {userNameOrEmail: values.username, password: values.password, rememberMe: true, captchaResponse}));
 
             if(response.status === 200) {
                 await NavigateToReturnUrl(returnUrl);
@@ -37,12 +38,13 @@ export const LoginWithPassword: FunctionComponent<LoginWithPasswordProps> = (pro
             }
         } catch (res: any) {
             let response = res.response;
-            if(response.status === 400) {
-                setLoginError(response.data["Errors"].values()[0]);
-            } else if(response.status === 422) {
+            setLoginError(res.message);
+            if(response.status === 422) {
                 //handle 2fa
             }  else if(response.status === 423) {
                 setLoginError("Konto zostało zablokowane na 5 minut po ostatniej nieudanej próbie logowania");
+            } else {
+
             }
         }
     }
