@@ -16,6 +16,7 @@ import * as Yup from "yup";
 import {object} from "yup";
 import {motion} from "framer-motion";
 import {UnwrapErrors} from "../Authed/Mutations";
+import { Section } from "../Login";
 
 export const FidoRegister: FunctionComponent = () => {
     const initialValues = {
@@ -40,7 +41,7 @@ export const FidoRegister: FunctionComponent = () => {
         <Layout>
             <Container>
                 <Logo />
-                <section>
+                <Section>
                     <Formik
                         initialValues={initialValues}
                         validationSchema={Yup.object({
@@ -71,7 +72,7 @@ export const FidoRegister: FunctionComponent = () => {
                             </Form>
                         )}
                     </Formik>
-                </section>
+                </Section>
             </Container>
             <Bg/>
         </Layout>

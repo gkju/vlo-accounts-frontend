@@ -63,7 +63,7 @@ export const Login: FunctionComponent = (props) => {
         <Layout>
             <Container>
                 <Logo />
-                <section>
+                <Section>
                     <LoginWithPassword loginError={loginError} setLoginError={setLoginError} />
                     <InputWrapper style={{marginTop: "-10px"}}>
                         <Button onPointerDown={navigateGoogle} type="submit" primaryColor="#FFFFFF" secondaryColor="#595959" size={InputSize.Medium} style={{display: "flex", justifyContent: "center", alignContent: "center"}}>Zaloguj się z <GoogleLogo style={{width: "42px", marginBottom: "-8px", marginLeft: "20px", transform: "scale(1.7)"}}/></Button>
@@ -78,14 +78,19 @@ export const Login: FunctionComponent = (props) => {
                         <TwitterIcon onPointerDown={navigateTwitter} style={{margin: "0 10px", cursor: "pointer", fontSize: "50px", padding: "7px", background: "white", borderRadius: "50%", color: "#1DA1F2"}} />
                     </Wrapper>
                     <TextWrapper onPointerUp={() => navigate("/FidoRegister")}>
-                            Zarejestruj się z FIDO (rekomendowane)
+                        Zarejestruj się z FIDO (rekomendowane)
                     </TextWrapper>
-                </section>
+                </Section>
             </Container>
             <Bg/>
         </Layout>
     )
 }
+
+export const Section = styled.section`
+  margin-top: -60px;
+  transform: scale(0.95);
+`;
 
 const TextWrapper = styled.div`
   color: #A1A1A1;

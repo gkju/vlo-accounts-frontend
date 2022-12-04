@@ -5,18 +5,19 @@ import {theme} from "@gkju/vlo-ui";
 export const Layout = styled.div`
   display: grid;
   grid-template-columns: 500px 1fr;
+  grid-template-rows: 1fr;
 `
 
 export const Container = styled.div`
   background: ${theme.primary};
   display: grid;
-  grid-template-rows: 30vh 50vh 20vh;
+  grid-template-rows: 1fr 2fr;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  position: relative;
 `
 
 export const Bg = styled.div`
-  width: 100%;
   height: 100%;
   background-image: Url("${vlobg}");
   background-position-y: top;

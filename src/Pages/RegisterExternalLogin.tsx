@@ -12,6 +12,7 @@ import {OpenApiSettings} from "../Config";
 import {GetReturnUrl} from "../Utils";
 import {useNavigate} from "react-router-dom";
 import {UnwrapErrors} from "./Authed/Mutations";
+import {Section} from "./Login";
 
 export const RegisterExternalLogin: FunctionComponent = (props) => {
     const returnUrl = GetReturnUrl(window.location.search);
@@ -54,7 +55,7 @@ export const RegisterExternalLogin: FunctionComponent = (props) => {
         <Layout>
             <Container>
                 <Logo />
-                <section>
+                <Section>
                     <FormikProvider value={Formik}>
                         <Form>
                             <InputWrapper>
@@ -73,7 +74,7 @@ export const RegisterExternalLogin: FunctionComponent = (props) => {
                             <motion.span animate={{opacity: !!registerError ? 1 : 0}}>{registerError}</motion.span>
                         </ErrorSpan>
                     </InputWrapper>
-                </section>
+                </Section>
             </Container>
             <Bg/>
             <Modal open={modal} close={() => {setModal(false); navigate("/Login?" + qs.stringify({returnUrl: returnUrl}));}}>Potwierdź swój adres e-mail</Modal>

@@ -86,7 +86,10 @@ export const EditableProfilePicture: FunctionComponent<props> = (props) => {
         }
     };
 
-    const handleDelete = () => {
+    const handleDelete: MouseEventHandler = (e) => {
+        // generally shouldn't do
+        e.stopPropagation();
+        e.preventDefault();
         Store.dispatch(queueModal({
             title: "Uwaga!",
             content: "Czy aby na pewno chcesz usunąć zdjęcie profilowe?",
@@ -106,7 +109,7 @@ export const EditableProfilePicture: FunctionComponent<props> = (props) => {
                     <ProfilePicture Id={props.profile.sub} />
                 </motion.div>
             </HideOverflow>
-            <Button whileHover={{scale: 0.9}} whileTap={{scale: 0.8}} onClick={() => handleDelete()}>
+            <Button style={{zIndex: 5}} whileHover={{scale: 0.9}} whileTap={{scale: 0.8}} onPointerDown={e => e.stopPropagation()} onClick={(e) => handleDelete(e)}>
                 <DeleteMuiIcon style={{fontSize: "25px"}} />
             </Button>
         </Wrapper>
@@ -152,7 +155,7 @@ const Button = styled(motion.div)`
     position: absolute;
     bottom: 10px;
     right: 10px;
-    z-index: 1;
+    z-index: 5;
     color: white;
     background: ${GetPrimary()};
     border-radius: 20%;
